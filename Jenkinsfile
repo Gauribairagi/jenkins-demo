@@ -8,10 +8,15 @@ pipeline {
                 checkout scm
             }
         }
-
+stage('Check Python') {
+    steps {
+        bat 'where python'
+        bat 'python --version'
+    }
+}
         stage('Run Python Script') {
             steps {
-                bat 'python3 hello.py'
+                bat 'python hello.py'
             }
         }
     }
