@@ -8,15 +8,16 @@ pipeline {
                 checkout scm
             }
         }
-stage('Check Python') {
-    steps {
-        bat 'where python'
-        bat 'python --version'
-    }
-}
-        stage('Run Python Script') {
+
+        stage('Compile Java') {
             steps {
-                bat 'python hello.py'
+                bat 'javac hello.java'
+            }
+        }
+
+        stage('Run Java Program') {
+            steps {
+                bat 'java hello'
             }
         }
     }
